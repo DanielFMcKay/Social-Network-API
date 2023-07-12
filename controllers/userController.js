@@ -18,7 +18,7 @@ module.exports = {
             .select('-__v')
             .then(dbUserData => {
                 if (!dbUserData) {
-                    return res.status(404).json(err + ": user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
+                    return res.status(404).json("user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
                 }
                 res.json(dbUserData)
             })
@@ -36,7 +36,7 @@ module.exports = {
             )
             .then(dbUserData => {
                 if (!dbUserData) {
-                    return res.status(404).json(err + ": user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
+                    return res.status(404).json("err user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
                 }
                 res.json(dbUserData)
             })
@@ -50,7 +50,7 @@ module.exports = {
         User.findOneAndDelete({ _id: req.params.id })
             .then(dbUserData => {
                 if (!dbUserData) {
-                    return res.status(404).json(err + ": user not found.");
+                    return res.status(404).json("user not found.");
                 }
                 res.json(dbUserData)
             })
@@ -79,7 +79,7 @@ module.exports = {
         )
             .then(dbUserData => {
                 if (!dbUserData) {
-                    return res.status(404).json(err + ": friend not found. Or possibly doesn't exist. Does anything really exist? How do you know?");
+                    return res.status(404).json("Friend not found. Or possibly doesn't exist. Does anything really exist? How do you know?");
                 }
                 res.json(dbUserData)
             })
@@ -97,7 +97,7 @@ module.exports = {
         )
             .then(dbUserData => {
                 if (!dbUserData) {
-                    return res.status(404).json(err + ": friend not found. I feel jokes would be cruel at this point.");
+                    return res.status(404).json("Friend not found. I think jokes would just be cruel at this point.");
                 }
                 res.json(dbUserData)
             })

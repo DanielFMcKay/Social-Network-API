@@ -16,7 +16,7 @@ module.exports = {
         Thought.findOne({ _id: req.params.id })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    return res.status(404).json(err + ": thought not found, or maybe thoughts are just a social construct.");
+                    return res.status(404).json("thought not found, or maybe thoughts are just a social construct.");
                 }
                 res.json(dbThoughtData)
             })
@@ -55,7 +55,7 @@ module.exports = {
             )
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    return res.status(404).json(err + ": thought not found. On the plus side, ignorance is bliss.");
+                    return res.status(404).json("thought not found. On the plus side, ignorance is bliss.");
                 }
                 res.json(dbThoughtData)
             })
@@ -69,7 +69,7 @@ module.exports = {
         Thought.findOneAndDelete({ _id: req.params.id })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    return res.status(404).json(err + ": thought not found. I'm thinking of a number between i and -i.");
+                    return res.status(404).json("thought not found. I'm thinking of a number between i and -i.");
                 }
                 res.json(dbThoughtData);
             })
@@ -101,7 +101,7 @@ module.exports = {
         )
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    return res.status(404).json(err + ": thought not found. ");
+                    return res.status(404).json("thought not found. ");
                 }
                 res.json(dbThoughtData)
             });
