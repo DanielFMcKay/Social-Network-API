@@ -1,4 +1,11 @@
 # 18 NoSQL: Social Network API
+by Dan McKay
+* This is the assignment for Week 18 of the Full Stack Coding Bootcamp as offered through UC Berkeley Continuing Education in partnership with edX. Currently, this is just a placeholder as this is still very much a work in progress!!
+
+## Overview
+* This is a back-end API for social network app, for the purpose of demonstrating server functionality for creating, retrieving, updating, and deleting users, thoughts (posts), and reactions (replies).
+
+For now the original Challenge Read Me has been left intact below.
 
 ## Your Task
 
