@@ -41,7 +41,7 @@ module.exports = {
     },
     // update a thought by id
     updateThought(req, res) {
-        User.updateOne({ _id: req.params.id })
+        User.findOneAndUpdate({ _id: req.params.id })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json(err + ": thought not found. On the plus side, ignorance is bliss.");
@@ -55,7 +55,7 @@ module.exports = {
     },
     // delete a thought by id
     deleteThought(req, res) {
-        User.deleteOne({ _id: req.params.id })
+        User.findOneAndDelete({ _id: req.params.id })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json(err + ": thought not found. I'm thinking of a number between i and -i.");
@@ -69,7 +69,7 @@ module.exports = {
     },
     // add a reaction to a thought
     addReaction(req, res) {
-        Thought.findOne(
+        Thought.findOneAndUpdate(
             { _id: req.params.id },
             { $addToSet: { reactions: req.body } },
             { new: true, runValidators: true }
@@ -83,7 +83,7 @@ module.exports = {
     },
     // remove a reaction from a thought
     deleteReaction(req, res) {
-        Thought.findOne(
+        Thought.findOneAndUpdate(
             { _id: req.params.id },
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
             { new: true }

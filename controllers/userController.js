@@ -29,7 +29,7 @@ module.exports = {
     },
     // update a user by id
     updateUser(req, res) {
-        User.updateOne({ _id: req.params.id })
+        User.findOneAndUpdate({ _id: req.params.id })
             .then(dbUserData => {
                 if (!dbUserData) {
                     return res.status(404).json(err + ": user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
@@ -43,7 +43,7 @@ module.exports = {
     },
     // delete a user by id
     deleteUser(req, res) {
-        User.deleteOne({ _id: req.params.id })
+        User.findOneAndDelete({ _id: req.params.id })
             .then(dbUserData => {
                 if (!dbUserData) {
                     return res.status(404).json(err + ": user not found.");
@@ -71,7 +71,7 @@ module.exports = {
     },
     // add a friend to a user's friend list
     addFriend(req, res) {
-        User.findOne(
+        User.findOneAndUpdate(
             { _id: req.params.id },
             { $addToSet: { friends: req.params.friendId } },
             { new: true }
@@ -89,7 +89,7 @@ module.exports = {
     },
     // remove a friend from a user's friend list
     removeFriend(req, res) {
-        User.findOne(
+        User.findOneAndUpdate(
             { _id: req.params.id },
             { $pull: { friends: req.params.friendId } },
             { new: true }
