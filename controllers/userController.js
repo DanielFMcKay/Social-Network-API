@@ -29,7 +29,11 @@ module.exports = {
     },
     // update a user by id
     updateUser(req, res) {
-        User.findOneAndUpdate({ _id: req.params.id })
+        User.findOneAndUpdate(
+            { _id: req.params.id },
+            { $set: req.body },
+            { runValidators: true, new: true }
+            )
             .then(dbUserData => {
                 if (!dbUserData) {
                     return res.status(404).json(err + ": user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
@@ -59,9 +63,6 @@ module.exports = {
     createUser(req, res) {
         User.create(req.body)
             .then(dbUserData => {
-                if (!dbUserData) {
-                    return res.status(404).json(err + ": user not found, or maybe THAT'S JUST WHAT THEY WANT YOU TO THINK!!!");
-                }
                 res.json(dbUserData)
             })
             .catch(err => {

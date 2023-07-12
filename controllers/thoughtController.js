@@ -29,10 +29,17 @@ module.exports = {
     createThought(req, res) {
         Thought.create(req.body)
             .then(dbThoughtData => {
-                if (!dbThoughtData) {
-                    return res.status(404).json(err + ": thought not found.");
+                return User.findOneAndUpdate(
+                    { _id: req.body.userId },
+                    { $push: { thoughts: dbThoughtData._id } },
+                    { new: true });
+
+            })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    return res.status(404).json("user not found.");
                 }
-                res.json(dbThoughtData)
+                res.json(dbUserData)
             })
             .catch(err => {
                 console.log(err + ": an error has occurred in creating a thought. I have a headache.");
@@ -41,7 +48,11 @@ module.exports = {
     },
     // update a thought by id
     updateThought(req, res) {
-        Thought.findOneAndUpdate({ _id: req.params.id })
+        Thought.findOneAndUpdate(
+            { _id: req.params.id },
+            { $set: req.body },
+            { runValidators: true, new: true }
+            )
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json(err + ": thought not found. On the plus side, ignorance is bliss.");
@@ -70,13 +81,13 @@ module.exports = {
     // add a reaction to a thought
     addReaction(req, res) {
         Thought.findOneAndUpdate(
-            { _id: req.params.id },
+            { _id: req.params.thoughtId },
             { $addToSet: { reactions: req.body } },
             { new: true, runValidators: true }
         )
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
-                    return res.status(404).json(err + ": thought not found. ");
+                    return res.status(404).json("thought not found. ");
                 }
                 res.json(dbThoughtData)
             });
@@ -84,7 +95,7 @@ module.exports = {
     // remove a reaction from a thought
     deleteReaction(req, res) {
         Thought.findOneAndUpdate(
-            { _id: req.params.id },
+            { _id: req.params.thoughtId },
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
             { new: true }
         )
