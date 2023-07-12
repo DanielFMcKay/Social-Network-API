@@ -27,7 +27,7 @@ module.exports = {
     },
     // create a new thought
     createThought(req, res) {
-        User.create(req.body)
+        Thought.create(req.body)
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json(err + ": thought not found.");
@@ -41,7 +41,7 @@ module.exports = {
     },
     // update a thought by id
     updateThought(req, res) {
-        User.findOneAndUpdate({ _id: req.params.id })
+        Thought.findOneAndUpdate({ _id: req.params.id })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json(err + ": thought not found. On the plus side, ignorance is bliss.");
@@ -55,7 +55,7 @@ module.exports = {
     },
     // delete a thought by id
     deleteThought(req, res) {
-        User.findOneAndDelete({ _id: req.params.id })
+        Thought.findOneAndDelete({ _id: req.params.id })
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json(err + ": thought not found. I'm thinking of a number between i and -i.");
