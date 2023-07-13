@@ -6,7 +6,7 @@ by Dan McKay
 * This is a back-end API for social network app, for the purpose of demonstrating server functionality for creating, retrieving, updating, and deleting users, thoughts (posts), and reactions (replies).
 
 ## Demo Video
-### A demo video can be viewed [here](https://drive.google.com/file/d/1qV1IvXh6J1E-UTecCUJ5VVedTVqG4cmw/view{:target="_blank"})
+### A demo video can be viewed [here](https://drive.google.com/file/d/1qV1IvXh6J1E-UTecCUJ5VVedTVqG4cmw/view)
 * It is recommended to watch it on 1080p or the highest available quality.
 
 * Screenshot of app on Postman interface
