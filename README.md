@@ -13,6 +13,34 @@ by Dan McKay
 * Screenshot of app on Postman interface
 ![image](https://github.com/DanielFMcKay/Social-Network-API/assets/123746582/01c4d57a-1fb8-4717-9a40-57c387657966)
 
+### Installation
+* Clone the repo to a local directory. After doing so, please navigate there in real time.
+* enter the line "npm i" to install dependencies.
+* use "npm start" to start the app.
+* You can use the Postman app to interface with it using the routes in Instructions, at http://localhost:3001.
+
+### Instructions
+* Once the server is started, you can use the following routes to interface with the app on Postman:
+  
+* to Retrieve all Users: GET: `http://localhost:3001/api/users`
+* to Retrieve all Thoughts: GET: `http://localhost:3001/api/thoughts`
+ 
+* to Create one User: POST: `http://localhost:3001/api/users`
+* to Retrieve one User: GET: `http://localhost:3001/api/users/:userId` (:userId is an internal variable that should be replaced by the actual 24-digit hexadecimal user id)
+* to Update one User: PUT: `http://localhost:3001/api/users/:userId`
+* to Delete one User: DELETE: `http://localhost:3001/api/users/:userId`
+
+* to Create one Thought: POST: `http://localhost:3001/api/thoughts`
+* to Retrieve one Thought: GET: `http://localhost:3001/api/thoughts/:id` (:id is an internal variable that should be replaced by the actual thought id)
+* to Update one Thought: PUT: `http://localhost:3001/api/thoughts/:id`
+* to Delete one Thought: DELETE: `http://localhost:3001/api/thoughts/:id`
+
+* to Create a Reaction to a Thought: POST: `http://localhost:3001/api/thoughts/reactions`
+* to Delete a Reaction: DELETE: `http://localhost:3001/api/thoughts/reactions/:reactionId` (:reactionId is an internal variable that should be replaced by the actual reaction id)
+
+* to Add a Friend to a User: POST: `http://localhost:3001/api/users/friends`
+* to Remove a Friend: DELETE: `http://localhost:3001/api/users/friends/:friendsId` (:friendId is an internal variable that should be replaced by the actual friend id)
+
 
 
 ### Technologies
