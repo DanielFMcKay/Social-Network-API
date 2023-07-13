@@ -16,7 +16,7 @@ by Dan McKay
 * Clone the repo to a local directory. After doing so, please navigate there in real time.
 * enter the line "npm i" to install dependencies.
 * use "npm start" to start the app.
-* You can use the Postman app to interface with it using the routes in Instructions, at http://localhost:3001.
+* You can use the Postman app to interface with it using the routes in Instructions, at `http://localhost:3001`.
 
 ### Instructions
 * Once the server is started, you can use the following routes to interface with the app on Postman:
