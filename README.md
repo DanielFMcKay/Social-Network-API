@@ -10,6 +10,7 @@ by Dan McKay
 * It is recommended to watch it on 1080p or the highest available quality.
 
 * Screenshot of app on Postman interface
+
 ![image](https://github.com/DanielFMcKay/Social-Network-API/assets/123746582/01c4d57a-1fb8-4717-9a40-57c387657966)
 
 ### Installation
