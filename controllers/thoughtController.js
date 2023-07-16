@@ -52,7 +52,7 @@ module.exports = {
             { _id: req.params.id },
             { $set: req.body },
             { runValidators: true, new: true }
-            )
+        )
             .then(dbThoughtData => {
                 if (!dbThoughtData) {
                     return res.status(404).json("thought not found. On the plus side, ignorance is bliss.");
@@ -71,7 +71,19 @@ module.exports = {
                 if (!dbThoughtData) {
                     return res.status(404).json("thought not found. I'm thinking of a number between i and -i.");
                 }
-                res.json(dbThoughtData);
+                // remove thought id from user's `thoughts` field
+                return User.findOneAndUpdate(
+                    { thoughts: req.params.id },
+                    { $pull: { thoughts: req.params.id } },
+                    // this line makes sure that the updated document is returned, instead of the existing one. Seems kind of important.
+                    { new: true }
+                );
+            })
+            .then((dbUserData) => {
+                if (!dbUserData) {
+                  return res.status(404).json({ message: 'No user found with this Thought. The thought exists only in a vacuum. Congrats, I am self-aware now.' });
+                }
+                res.json({message: "Thought deleted. Or at least I can't remember it."});
             })
             .catch(err => {
                 console.log(err + ": an error has occurred in deleting a thought. I'm thinking of a number between i and -i.");
